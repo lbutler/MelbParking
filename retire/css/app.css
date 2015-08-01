@@ -1,0 +1,16 @@
+.game-container {
+    display: inline-block;
+    position: relative;
+}
+.fps {
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.2em;
+    padding: 0.2em;
+    line-height: 1.4em;
+    background-color: #fff;
+    color: #000;
+    opacity: 0.5;
+    min-width: 2.8em;
+    white-space: nowrap;
+}
