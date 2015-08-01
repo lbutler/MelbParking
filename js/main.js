@@ -171,6 +171,8 @@
 //D3 TEST START
 
 
+//TODO:
+//Lots of clean up here, remove the old color reference
 (function() {
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = 1728 - margin.left - margin.right,
@@ -210,8 +212,6 @@
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  //d3.tsv("data/data.tsv", function(error, data) {
-  //  if (error) throw error;
 
     var data = JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats));
 
@@ -247,26 +247,10 @@
         .attr("class", "browser");
 
     browser.append("path")
-        .attr("class", "area")
-        .attr("d", function(d) { return area(d.values); })
-        .style("fill", function(d) { return color(d.name); });
+        .attr("class", function(d) { return d.name; })
+        .attr("d", function(d) { return area(d.values); });
+        //.style("fill", function(d) { return color(d.name); });
 
-//    browser.append("text")
-//        .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-//        .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
-//        .attr("x", -6)
-//        .attr("dy", ".35em")
-//        .text(function(d) { return d.name; });
-//
-//    svg.append("g")
-//        .attr("class", "x axis")
-//        .attr("transform", "translate(0," + height + ")")
-//        .call(xAxis);
-//
-//    svg.append("g")
-//        .attr("class", "y axis")
-//        .call(yAxis);
-  //});
 
 }());
 

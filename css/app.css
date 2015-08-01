@@ -12,7 +12,7 @@ svg {
   position: relative;
 }
 
-.parking-taken {
+.parking-taken, .parkingTaken {
   fill: #0000ff;
 }
 
@@ -21,19 +21,19 @@ svg {
 
 }
 
-.parking-empty {
+.parking-empty, .parkingEmpty {
   fill: #00ff00;
 }
 
-.parking-no-monitoring {
+.parking-no-monitoring, .parkingNoMonitoring {
   fill: #FFF;
 }
 
-.parking-in-violation {
+.parking-in-violation, .parkingInViolation {
   fill: #ff0000;
 }
 
-.parking-will-violate {
+.parking-will-violate, .parkingWillViolate {
   fill: #ffff00;
 }
 
