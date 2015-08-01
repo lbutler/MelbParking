@@ -82,7 +82,6 @@
 
           }
 
-          console.log(collection);
 
           var transform = d3.geo.transform({point: projectPoint}),
               path = d3.geo.path().projection(transform);
@@ -173,7 +172,7 @@
 
 
 (function() {
-  var margin = {top: 20, right: 0, bottom: 30, left: 0},
+  var margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = 1728 - margin.left - margin.right,
       height = 200 - margin.top - margin.bottom;
 
@@ -229,7 +228,6 @@
       d.parkingTaken = d.parkingTaken / 3159*100;
       d.parkingWillViolate = d.parkingWillViolate / 3159*100;
 
-      console.log(d);
     });
 
     var browsers = stack(color.domain().map(function(name) {
