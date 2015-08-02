@@ -115,7 +115,8 @@ color: #777;
 
 .menu-grid {
 
-  width: 170px;
+  width: 100%;
+  font-size: 22px;
 
 }
 
