@@ -4,24 +4,26 @@ L.Control.ParkingDayStats = L.Control.extend({
 
       var div = L.DomUtil.create('div', 'info timestats');
 
-      div.innerHTML = '<div class="grid">' +
-      '  <div class="col-1-2"><h4>Total Parking Events: <h1><span id="stats-total-events">??</span></h1></h4></div>' +
-      '  <div class="col-1-2"><h4>Total Parking Violations: <h1><span id="stats-total-violations">??</span></h1></h4></div>' +
+      div.innerHTML = '<div class="stats-grid">' +
+      '  <div class="col-1-2"><h4>Parking Events<h1><span id="stats-total-events">??</span></h1></h4></div>' +
+      '  <div class="col-1-2"><h4>Parking Violations<h1><span id="stats-total-violations">??</span></h1></h4></div>' +
       ''+
-      '  <div class="col-1-2"><h4>Potential Revenue: <h1><span id="stats-potential-revenue">??</span></h1></h4></div>' +
-      '  <div class="col-1-2"><h4>Potential Fines: <h1><span id="stats-potential-fines">??</span></h1></h4></div>' +
+      '  <div class="col-1-2"><h4>Potential Revenue<h1><span id="stats-potential-revenue">??</span></h1></h4></div>' +
+      '  <div class="col-1-2"><h4>Potential Fines<h1><span id="stats-potential-fines">??</span></h1></h4></div>' +
+      '</div>'+
+      '<hr>'+
+      '<div class="stats-grid">' +
+      '  <div class="col-1-3"><h4>Monitoring<h1><span id="stats-monitoring">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>No Monitoring<h1><span id="stats-no-monitoring">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Total Spaces<h1><span id="stats-total">??</span></h1><h4></div>' +
       ''+
-      '  <div class="col-1-3"><h4>Monitoring: <h1><span id="stats-monitoring">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>No Monitoring: <h1><span id="stats-no-monitoring">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Total Spaces: <h1><span id="stats-total">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Free<h1><span id="stats-parking-empty">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Taken<h1><span id="stats-parking-taken">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Dummy<h1><span id="stats-parking-dummy">??</span></h1><h4></div>' +
       ''+
-      '  <div class="col-1-3"><h4>Free: <h1><span id="stats-parking-empty">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Taken: <h1><span id="stats-parking-taken">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Dummy: <h1><span id="stats-parking-dummy">??</span></h1><h4></div>' +
-      ''+
-      '  <div class="col-1-3"><h4>Taken will leave: <h1><span id="stats-parking-will-leave">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Taken will Violate: <h1><span id="stats-parking-will-violation">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Over limt: <h1><span id="stats-parking-in-violation">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Taken will leave<h1><span id="stats-parking-will-leave">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Taken will Violate<h1><span id="stats-parking-will-violation">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Over limt<h1><span id="stats-parking-in-violation">??</span></h1><h4></div>' +
       ''+
       '</div>';
 

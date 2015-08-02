@@ -100,8 +100,14 @@ color: #777;
   height:100%;
 }
 
-.grid {
+.stats-grid {
 
   width: 300px;
+
+}
+
+.menu-grid {
+
+  width: 170px;
 
 }
