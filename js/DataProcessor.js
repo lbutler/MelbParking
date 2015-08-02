@@ -6,6 +6,7 @@ var MELBPARKING = {} || MELBPARKING;
 
     dayStats:  new Array(1441),
     parkingViolations: 0,
+    parkingEvents: 0,
 
     initStats: function() {
       //Reset
@@ -80,6 +81,9 @@ var MELBPARKING = {} || MELBPARKING;
 
       //Loop through find each park add data
       for (i = 0; i < feature.properties.sensor.length; i++) {
+
+      //Add to total park events this day
+      this.parkingEvents += 1;
 
       start = moment(feature.properties.sensor[i].arrivalDateTime).diff(dataDate, 'minutes');
       end =  moment(feature.properties.sensor[i].depart).diff(dataDate, 'minutes');

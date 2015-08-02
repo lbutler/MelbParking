@@ -18,7 +18,7 @@ L.Control.ParkingDayStats = L.Control.extend({
       '  <div class="col-1-3"><h4>Spaces<h1><span id="stats-total">??</span></h1><h4></div>' +
       ''+
       '  <div class="col-1-3"><h4>Free<h1><span id="stats-parking-empty">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Taken<h1><span id="stats-parking-taken">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Taken<h1><span id="stats-parking-total-taken">??</span></h1><h4></div>' +
       '  <div class="col-1-3"><h4>Dummy<h1><span id="stats-parking-dummy">??</span></h1><h4></div>' +
       ''+
       '  <div class="col-1-3"><h4>Will leave<h1><span id="stats-parking-will-leave">??</span></h1><h4></div>' +
@@ -41,7 +41,8 @@ L.Control.ParkingDayStats = L.Control.extend({
       document.getElementById('stats-no-monitoring').innerHTML = stats.parkingNoMonitoring;
 
       document.getElementById('stats-parking-empty').innerHTML = stats.parkingEmpty;
-      document.getElementById('stats-parking-taken').innerHTML = stats.parkingTaken;
+      document.getElementById('stats-parking-total-taken').innerHTML = stats.parkingTaken + stats.parkingWillViolate + stats.parkingInViolation;
+      document.getElementById('stats-parking-will-leave').innerHTML = stats.parkingTaken;
       document.getElementById('stats-parking-will-violation').innerHTML = stats.parkingWillViolate;
       document.getElementById('stats-parking-in-violation').innerHTML = stats.parkingInViolation;
     },
@@ -53,6 +54,7 @@ L.Control.ParkingDayStats = L.Control.extend({
       var potentialFines = parkingViolations * 30;
       
       document.getElementById('stats-total-violations').innerHTML = parkingViolations;
+      document.getElementById('stats-total-events').innerHTML = MELBPARKING.DataProcessor.parkingEvents;
       document.getElementById('stats-potential-fines').innerHTML = '$' + potentialFines.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 
 
