@@ -1,4 +1,4 @@
-L.Control.TimeParkingGraph = L.Control.extend({
+L.Control.ParkingTimeGraph = L.Control.extend({
   options: {position: 'bottomleft'},
   onAdd: function (map) {
     
@@ -95,6 +95,6 @@ L.Control.TimeParkingGraph = L.Control.extend({
 
 });
 
-L.control.timeParkingGraph = function (options) {
-  return new L.Control.TimeParkingGraph(options);
+L.control.parkingTimeGraph = function (options) {
+  return new L.Control.ParkingTimeGraph(options);
 };
