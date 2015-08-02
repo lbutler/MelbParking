@@ -37,8 +37,8 @@
 
         slider.addTo(map);
 
-        var timeParkingGraph = L.control.timeParkingGraph();
-        map.addControl(timeParkingGraph);
+        var parkingTimeGraph = L.control.parkingTimeGraph();
+        map.addControl(parkingTimeGraph);
 
 
         //Slider
@@ -89,7 +89,7 @@
           reset();
           refreshTime();
           parkingDayStats.updateDayStats();
-          timeParkingGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
+          parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
 
           // Reposition the SVG to cover the features.
           function reset() {
