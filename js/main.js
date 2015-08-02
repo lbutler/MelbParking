@@ -13,6 +13,7 @@
 
         var parkingTimeControl = L.control.parkingTimeControl();
         map.addControl(parkingTimeControl);
+        parkingTimeControl.init();
 
         var parkingDayStats = L.control.parkingDayStats();
         map.addControl(parkingDayStats);
@@ -27,6 +28,7 @@
           parkingSliderControl.toogleHoursDisplayed();
           parkingTimeGraph.toogleHoursDisplayed();
         });
+
 
         //Slider
         var currentDate = new Date(2014, 5, 12, 0, 0, 0);
