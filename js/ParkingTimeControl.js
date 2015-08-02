@@ -19,11 +19,8 @@ L.Control.ParkingTimeControl = L.Control.extend({
     updateTime: function(newTime) {
 
       document.getElementById('time').innerHTML = moment(newTime).format('h:mm a');
-    },
-
-    _toogle24hrMode: function() {
-        //Better do some pubsub stuff here
     }
+
 
 });
 

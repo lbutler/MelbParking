@@ -23,6 +23,10 @@
         var parkingTimeGraph = L.control.parkingTimeGraph();
         map.addControl(parkingTimeGraph);
 
+        $('#js-toogle-24hr-mode').click( function() {
+          parkingSliderControl.toogleHoursDisplayed();
+          parkingTimeGraph.toogleHoursDisplayed();
+        });
 
         //Slider
         var currentDate = new Date(2014, 5, 12, 0, 0, 0);
