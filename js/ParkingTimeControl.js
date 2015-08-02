@@ -10,8 +10,8 @@ L.Control.ParkingTimeControl = L.Control.extend({
     '<hr>'+
     '<div class="menu-grid">' +
     '   <div class="col-1-4"><i class="fa fa-calendar-o"></i></div>' +
-    '   <div class="col-1-4"><i class="fa fa-clock-o"></i></div>' +
-    '   <div class="col-1-4"><i class="fa fa-github"></i></div>' +
+    '   <div id="js-toogle-24hr-mode" class="col-1-4"><i class="fa fa-clock-o"></i></div>' +
+    '   <div class="col-1-4"><a href="https://github.com/lbutler/MelbParking" target="_blank"><i class="fa fa-github"></i></a></div>' +
     '   <div class="col-1-4"><i class="fa fa-question-circle"></i></div>' +
     '</div>';
     return div;
@@ -19,6 +19,10 @@ L.Control.ParkingTimeControl = L.Control.extend({
     updateTime: function(newTime) {
 
       document.getElementById('time').innerHTML = moment(newTime).format('h:mm a');
+    },
+
+    _toogle24hrMode: function() {
+        //Better do some pubsub stuff here
     }
 
 });
