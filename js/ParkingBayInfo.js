@@ -3,22 +3,34 @@ L.Control.ParkingBayInfo = L.Control.extend({
 
   onAdd: function (map) {
     this._div = L.DomUtil.create('div', 'info');
-    this.update();
+    this.clearInfo();
     return this._div;
   },
 
   update: function (props) {
-      this._div.innerHTML = '<h4>Parking Information</h4>' +  (props ?
-          
+
+      clearTimeout(this._timeout);
+
+      this._div.innerHTML = '<h4>Parking Information</h4>' +
           '<h3>'+ props.properties.streetName + ' - ' + props.properties.streetMarker+'</h3>' +
           '<h4>Restrictions</h4>' +
           this._getSignPlates(props.properties.signPlates) +
           '<h4>Parking Events</h4>' +
-          this._getParkingEvents(props.properties.sensor)
+          this._getParkingEvents(props.properties.sensor);
+  },
 
-          : '<b>Hover over a parking space</b>'
+  clearInfo: function () {
+    var self = this;
 
-        );
+    clearTimeout(this._timeout);
+
+    this._timeout = setTimeout(function() {
+      console.log('clearInfo Called');
+       self._div.innerHTML = '<h4>Parking Information</h4>' +
+      '<b>Hover over a parking space</b>';
+
+    }, 400);
+
   },
 
   _getSignPlates: function(signPlates) {
@@ -49,10 +61,7 @@ L.Control.ParkingBayInfo = L.Control.extend({
 
   }
 
-
-
 });
-
 
 L.control.parkingBayInfo = function (options) {
     return new L.Control.ParkingBayInfo(options);

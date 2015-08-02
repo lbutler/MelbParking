@@ -55,7 +55,7 @@
             .enter().append("path")
             .on({
               "mouseover": function(d) { info.update(d); },
-              "mouseout":  function(d) { info.update(); },
+              "mouseout":  function(d) {info.clearInfo(); },
               "click":  function(d) { console.log(d); },
             });
 
@@ -89,7 +89,6 @@
             var point = map.latLngToLayerPoint(new L.LatLng(y, x));
             this.stream.point(point.x, point.y);
           }
-
 
 
         function refreshTime() {
