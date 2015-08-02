@@ -24,7 +24,6 @@ L.Control.ParkingBayInfo = L.Control.extend({
     clearTimeout(this._timeout);
 
     this._timeout = setTimeout(function() {
-      console.log('clearInfo Called');
        self._div.innerHTML = '<h4>Parking Information</h4>' +
       '<b>Hover over a parking space</b>';
 
