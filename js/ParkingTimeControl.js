@@ -23,7 +23,7 @@ L.Control.ParkingTimeControl = L.Control.extend({
     init: function() {
         var self = this;
         $('#js-open-datepicker').click( function() {
-          self.addDatepicker()
+          self.addDatepicker();
           $('.time-controls-front').hide();
 
         });
