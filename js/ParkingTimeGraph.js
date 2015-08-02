@@ -1,14 +1,18 @@
 L.Control.ParkingTimeGraph = L.Control.extend({
-  options: {position: 'bottomleft'},
+  options: {position: 'bottomleft', peakHoursOnly: true},
   onAdd: function (map) {
     
     this._div = L.DomUtil.create('div', 'info graph');
 
     this._div.innerHTML = '<div id="day-graph" class="day-graph-container"></div>';
 
+
     return this._div;
   },
   update: function(data) {
+
+    this._data = JSON.parse(JSON.stringify(data));
+
     var margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = 1728 - margin.left - margin.right,
       height = 150 - margin.top - margin.bottom;
@@ -51,9 +55,10 @@ L.Control.ParkingTimeGraph = L.Control.extend({
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       //Only use peak time
-      data = data.splice(450,780);
-      console.log(data);
-
+      if (this.options.peakHoursOnly === true) {
+        data = data.splice(450,780);
+      }
+      
       color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
 
 
@@ -90,8 +95,15 @@ L.Control.ParkingTimeGraph = L.Control.extend({
           .attr("d", function(d) { return area(d.values); });
           //.style("fill", function(d) { return color(d.name); });
 
+  },
 
-  }
+    toogleHoursDisplayed: function() {
+
+      this.options.peakHoursOnly = !this.options.peakHoursOnly;
+      this.update(this._data);
+
+    }
+
 
 });
 

@@ -55,7 +55,7 @@ L.Control.ParkingSliderControl = L.Control.extend({
       //refresh and move within new bound if need be
       this._slider.slider("value", currentValue);
 
-    },
+    }
 
 
     });
