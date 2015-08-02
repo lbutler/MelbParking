@@ -11,31 +11,14 @@
         var info = L.control.parkingBayInfo();
         map.addControl(info);
 
-
         var parkingTimeControl = L.control.parkingTimeControl();
         map.addControl(parkingTimeControl);
 
         var parkingDayStats = L.control.parkingDayStats();
         map.addControl(parkingDayStats);
 
-        var slider = L.control({position: 'bottomleft'});
-        slider.onAdd = function (map) {
-
-          var div = L.DomUtil.create('div', 'info slider');
-
-          $(div).mousedown(function () {
-            map.dragging.disable();
-          });
-          $(document).mouseup(function () {
-            map.dragging.enable();
-          });
-
-          div.innerHTML = '<div id="slider"></div>';
-
-          return div;
-        };
-
-        slider.addTo(map);
+        var parkingSliderControl = L.control.parkingSliderControl();
+        map.addControl(parkingSliderControl);
 
         var parkingTimeGraph = L.control.parkingTimeGraph();
         map.addControl(parkingTimeGraph);
@@ -52,16 +35,7 @@
 
         d3.json("data/ParkingLocations.json", function(collection) {
 
-          $( "#slider" ).slider({
-            orientation: "horizontal",
-            range: "min",
-            //max: 1440,
-            max: 1230,
-            min: 450,
-            value: 0,
-            slide: refreshTime,
-            change: refreshTime
-          });
+          parkingSliderControl.init(refreshTime);
 
           MELBPARKING.DataProcessor.initStats();
 
