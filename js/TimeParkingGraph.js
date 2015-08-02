@@ -4,7 +4,7 @@ L.Control.TimeParkingGraph = L.Control.extend({
     
     this._div = L.DomUtil.create('div', 'info graph');
 
-    this._div.innerHTML = '<div id="day-graph"></div>';
+    this._div.innerHTML = '<div id="day-graph" class="day-graph-container"></div>';
 
     return this._div;
   },
@@ -43,13 +43,12 @@ L.Control.TimeParkingGraph = L.Control.extend({
 
     d3.select('#day-graph').selectAll('*').remove();
     var svg = d3.select("#day-graph").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .attr("viewBox","0 0 1728 150")
+        .attr("preserveAspectRatio","none")
+        .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-      //var data = JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats));
 
       //Only use peak time
       data = data.splice(450,780);

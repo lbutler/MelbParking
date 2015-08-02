@@ -95,3 +95,7 @@ color: #777;
   height: 150px;
   margin-left: 0;
 }
+
+.day-graph-container {
+  height:100%;
+}
