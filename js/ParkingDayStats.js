@@ -4,11 +4,7 @@ L.Control.ParkingDayStats = L.Control.extend({
 
       var div = L.DomUtil.create('div', 'info timestats');
 
-      div.innerHTML = '<h1>Thursday</h1>' +
-      '<h2>12th June 2014</h2>' +
-      '<h1><i class="fa fa-clock-o"></i> <span id="time">12:00 am</span><h1>' +
-      '<hr />' +
-      '<h4>Total Parking Violations: <h1><span id="stats-total-violations">??</span></h1><h4>' +
+      div.innerHTML = '<h4>Total Parking Violations: <h1><span id="stats-total-violations">??</span></h1><h4>' +
       '<h4>Potential Fines: <h1><span id="stats-potential-fines">??</span></h1><h4>' +
       '<h4>Total Spaces: <h1><span id="stats-total">??</span></h1><h4>' +
       '<h4>Monitoring: <h1><span id="stats-monitoring">??</span></h1><h4>' +

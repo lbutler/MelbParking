@@ -11,11 +11,12 @@
         var info = L.control.parkingBayInfo();
         map.addControl(info);
 
+
+        var parkingTimeControl = L.control.parkingTimeControl();
+        map.addControl(parkingTimeControl);
+
         var parkingDayStats = L.control.parkingDayStats();
         map.addControl(parkingDayStats);
-
-
-
 
         var slider = L.control({position: 'bottomleft'});
         slider.onAdd = function (map) {
@@ -117,8 +118,10 @@
 
 
         function refreshTime() {
+
+
           var newDateObj = new Date(currentDate.getTime() + $( "#slider" ).slider( "value" )*60000);
-          currentTime.innerHTML = moment(newDateObj).format('h:mm a');
+          parkingTimeControl.updateTime(newDateObj);
 
           var minute = $( "#slider" ).slider( "value" );
 
