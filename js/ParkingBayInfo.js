@@ -11,8 +11,7 @@ L.Control.ParkingBayInfo = L.Control.extend({
 
       clearTimeout(this._timeout);
 
-      this._div.innerHTML = '<h4>Parking Information</h4>' +
-          '<h3>'+ props.properties.streetName + ' - ' + props.properties.streetMarker+'</h3>' +
+      this._div.innerHTML = '<h3>'+ props.properties.streetName + ' - ' + props.properties.streetMarker+'</h3>' +
           '<h4>Restrictions</h4>' +
           this._getSignPlates(props.properties.signPlates) +
           '<h4>Parking Events</h4>' +
@@ -35,7 +34,7 @@ L.Control.ParkingBayInfo = L.Control.extend({
 
   _getSignPlates: function(signPlates) {
 
-    var domString = '<ul>';
+    var domString = '<ul class="parking-info-list">';
 
     for (var i = 0; i < signPlates.length; i++) {
       domString += '<li>'+signPlates[i].Sign + '</li>';
@@ -49,10 +48,11 @@ L.Control.ParkingBayInfo = L.Control.extend({
 
   _getParkingEvents: function(parkingEvents) {
 
-    var domString = '<ul>';
+    var overstay = '<i class="fa fa-exclamation-triangle"></i>';
+    var domString = '<ul class="parking-info-list">';
 
     for (var i = 0; i < parkingEvents.length; i++) {
-      domString += '<li>'+parkingEvents[i].arrivalDateTime.substr(11) + ' - ' + parkingEvents[i].depart.substr(11) + '</li>';
+      domString += '<li class="'+(parkingEvents[i].inViolation ? 'violation': 'withinlimit')+'"">'  +parkingEvents[i].arrivalDateTime.substr(11) + ' - ' + parkingEvents[i].depart.substr(11) + ' ' + (parkingEvents[i].inViolation ? overstay: '') + '</li>';
     }
 
     domString += '</ul>';

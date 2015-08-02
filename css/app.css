@@ -44,7 +44,7 @@ path {
 }
 
 .leaflet-zoom-hide path:hover {
-  fill-opacity: .7;
+  fill-opacity: 1;
   cursor: pointer;
 }
 
@@ -113,4 +113,14 @@ color: #777;
 
   width: 170px;
 
+}
+
+.violation {
+  color: #a94442;
+}
+
+.parking-info-list {
+    list-style-type: none;
+    padding:0;
+    margin:0 20px 20px 20px;
 }
