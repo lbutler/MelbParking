@@ -42,12 +42,11 @@ svg {
 path {
   fill-opacity: .35;
 }
-/*
-path:hover {
-  fill: brown;
+
+.leaflet-zoom-hide path:hover {
   fill-opacity: .7;
   cursor: pointer;
-}*/
+}
 
 .axis path,
 .axis line {
