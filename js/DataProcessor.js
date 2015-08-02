@@ -10,8 +10,13 @@ var MELBPARKING = {} || MELBPARKING;
     initStats: function() {
       //Reset
       this.dayStats = new Array(1441);
+
+      var currentDate = new Date(2014, 5, 12, 0, 0, 0);
+
       for (var i = 0; i < this.dayStats.length; i++) {
         this.dayStats[i] = {  parkingEmpty:0, parkingTaken:0, parkingWillViolate:0, parkingInViolation:0, parkingNoMonitoring:0 };
+        
+        this.dayStats[i].date = moment(currentDate).add(i, 'minutes').toDate();
       }
 
     },

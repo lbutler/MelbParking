@@ -1,3 +1,5 @@
+//Thanks: http://bl.ocks.org/mbostock/3885211 | Stacked Area Chart
+
 L.Control.ParkingTimeGraph = L.Control.extend({
   options: {position: 'bottomleft', peakHoursOnly: true},
   onAdd: function (map) {
@@ -13,7 +15,7 @@ L.Control.ParkingTimeGraph = L.Control.extend({
 
     this._data = JSON.parse(JSON.stringify(data));
 
-    var margin = {top: 0, right: 0, bottom: 0, left: 0},
+    var margin = {top: 0, right: 0, bottom: 30, left: 0},
       width = 1728 - margin.left - margin.right,
       height = 150 - margin.top - margin.bottom;
 
@@ -63,8 +65,9 @@ L.Control.ParkingTimeGraph = L.Control.extend({
 
 
       data.forEach(function(d, index) {
-        //d.date = parseDate(d.date);
-        d.date = index;
+        d.date = new Date(d.date);
+        ////d.date = index;
+        //console.log(d.date);
 
         d.parkingEmpty = d.parkingEmpty / 3159  *100;
         d.parkingInViolation = d.parkingInViolation / 3159*100;
@@ -93,7 +96,13 @@ L.Control.ParkingTimeGraph = L.Control.extend({
       browser.append("path")
           .attr("class", function(d) { return d.name; })
           .attr("d", function(d) { return area(d.values); });
-          //.style("fill", function(d) { return color(d.name); });
+
+      svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+
 
   },
 

@@ -63,6 +63,7 @@
           reset();
           refreshTime();
           parkingDayStats.updateDayStats();
+
           parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
 
           // Reposition the SVG to cover the features.
