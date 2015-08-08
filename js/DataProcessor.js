@@ -1,4 +1,4 @@
-var MELBPARKING = {} || MELBPARKING;
+var MELBPARKING = MELBPARKING || {};
 
 (function() {
 
