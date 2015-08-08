@@ -6,13 +6,19 @@ var MELBPARKING = MELBPARKING || {};
 
     init: function(currentDate) {
 
+        var self = this;
+
+        this._currentDate = currentDate;
+
         //SVG Display
-        var svg = d3.select(MELBPARKING.Map.map.getPanes().overlayPane).append("svg"),
-            g = svg.append("g").attr("class", "leaflet-zoom-hide");
+        this._svg = d3.select(MELBPARKING.Map.map.getPanes().overlayPane).append("svg");
+        this._g = this._svg.append("g").attr("class", "leaflet-zoom-hide");
 
         d3.json("data/ParkingLocations.json", function(collection) {
 
-          MELBPARKING.Map.parkingSliderControl.init(refreshTime);
+          self._collection = collection;
+
+          MELBPARKING.Map.parkingSliderControl.init(self.refreshTime);
 
           MELBPARKING.DataProcessor.initStats();
 
@@ -24,10 +30,10 @@ var MELBPARKING = MELBPARKING || {};
           }
 
 
-          var transform = d3.geo.transform({point: projectPoint}),
-              path = d3.geo.path().projection(transform);
+          var transform = d3.geo.transform({point: self.projectPoint});
+          self._path = d3.geo.path().projection(transform);
 
-          var feature = g.selectAll("path")
+          self._feature = self._g.selectAll("path")
               .data(collection.features)
             .enter().append("path")
             .on({
@@ -36,9 +42,9 @@ var MELBPARKING = MELBPARKING || {};
               "click":  function(d) { console.log(d); },
             });
 
-          MELBPARKING.Map.map.on("viewreset", reset);
-          reset();
-          refreshTime();
+          MELBPARKING.Map.map.on("viewreset", self.reset);
+          self.reset();
+          self.refreshTime();
           MELBPARKING.Map.parkingDayStats.updateDayStats();
 
           MELBPARKING.Map.parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
@@ -49,22 +55,26 @@ var MELBPARKING = MELBPARKING || {};
 
     reset: function() {
 
-      var bounds = path.bounds(collection),
+      var bounds = this._path.bounds(this._collection),
                 topLeft = bounds[0],
                 bottomRight = bounds[1];
 
-            svg .attr("width", bottomRight[0] - topLeft[0])
+            this._svg .attr("width", bottomRight[0] - topLeft[0])
                 .attr("height", bottomRight[1] - topLeft[1])
                 .style("left", topLeft[0] + "px")
                 .style("top", topLeft[1] + "px");
 
-            g   .attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+            this._g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
 
-            feature.attr("d", path);
+            this._feature.attr("d", this._path);
 
     },
 
     refreshTime: function() {
+
+      //TODO:
+      //Dont do this
+      var currentDate = MELBPARKING.D3LeafletLayer._currentDate;
 
       var newDateObj = new Date(currentDate.getTime() + $( "#slider" ).slider( "value" )*60000);
           MELBPARKING.Map.parkingTimeControl.updateTime(newDateObj);
