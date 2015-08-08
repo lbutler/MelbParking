@@ -3,31 +3,7 @@
 //
 //        }());
 
-        var map = new L.Map("map", {center: [-37.8177175, 144.959922], zoom: 15,  zoomControl:false })
-            .addLayer(new L.TileLayer("http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",{
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-}));
-
-        var info = L.control.parkingBayInfo();
-        map.addControl(info);
-
-        var parkingTimeControl = L.control.parkingTimeControl();
-        map.addControl(parkingTimeControl);
-        parkingTimeControl.init();
-
-        var parkingDayStats = L.control.parkingDayStats();
-        map.addControl(parkingDayStats);
-
-        var parkingSliderControl = L.control.parkingSliderControl();
-        map.addControl(parkingSliderControl);
-
-        var parkingTimeGraph = L.control.parkingTimeGraph();
-        map.addControl(parkingTimeGraph);
-
-        $('#js-toogle-24hr-mode').click( function() {
-          parkingSliderControl.toogleHoursDisplayed();
-          parkingTimeGraph.toogleHoursDisplayed();
-        });
+      MELBPARKING.Map.init();
 
 
         //Slider
@@ -36,12 +12,12 @@
 
 
         //SVG Display
-        var svg = d3.select(map.getPanes().overlayPane).append("svg"),
+        var svg = d3.select(MELBPARKING.Map.map.getPanes().overlayPane).append("svg"),
             g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
         d3.json("data/ParkingLocations.json", function(collection) {
 
-          parkingSliderControl.init(refreshTime);
+          MELBPARKING.Map.parkingSliderControl.init(refreshTime);
 
           MELBPARKING.DataProcessor.initStats();
 
@@ -60,17 +36,17 @@
               .data(collection.features)
             .enter().append("path")
             .on({
-              "mouseover": function(d) { info.update(d); },
-              "mouseout":  function(d) {info.clearInfo(); },
+              "mouseover": function(d) { MELBPARKING.Map.info.update(d); },
+              "mouseout":  function(d) { MELBPARKING.Map.info.clearInfo(); },
               "click":  function(d) { console.log(d); },
             });
 
-          map.on("viewreset", reset);
+          MELBPARKING.Map.map.on("viewreset", reset);
           reset();
           refreshTime();
-          parkingDayStats.updateDayStats();
+          MELBPARKING.Map.parkingDayStats.updateDayStats();
 
-          parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
+          MELBPARKING.Map.parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)));
 
           // Reposition the SVG to cover the features.
           function reset() {
@@ -92,7 +68,7 @@
 
           // Use Leaflet to implement a D3 geometric transformation.
           function projectPoint(x, y) {
-            var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+            var point = MELBPARKING.Map.map.latLngToLayerPoint(new L.LatLng(y, x));
             this.stream.point(point.x, point.y);
           }
 
@@ -101,13 +77,13 @@
 
 
           var newDateObj = new Date(currentDate.getTime() + $( "#slider" ).slider( "value" )*60000);
-          parkingTimeControl.updateTime(newDateObj);
+          MELBPARKING.Map.parkingTimeControl.updateTime(newDateObj);
 
           var minute = $( "#slider" ).slider( "value" );
 
 
           //Updating Parking Stats Control
-          parkingDayStats.updateStats(MELBPARKING.DataProcessor.dayStats[minute]);
+          MELBPARKING.Map.parkingDayStats.updateStats(MELBPARKING.DataProcessor.dayStats[minute]);
 
           d3.select(".leaflet-overlay-pane svg").selectAll("path").attr("class", function (d) {
 
