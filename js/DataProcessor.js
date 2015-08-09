@@ -64,60 +64,60 @@ var MELBPARKING = MELBPARKING || {};
       var start,end;
       var signLookup = {};
 
-
-
       //Loop through add signPlate times, this is when monitoring is happening
       for (i = 0; i < feature.properties.signPlates.length; i++) {
 
-      start = moment(date + 'T' + feature.properties.signPlates[i].StartTime).diff(dataDate, 'minutes');
-      end =  moment(date + 'T' + feature.properties.signPlates[i].EndTime).diff(dataDate, 'minutes');
+        //Performance Change
+        //Quicker to pull out hour and times by 60 and then add minute then to use moment
+        start = (feature.properties.signPlates[i].StartTime.substring(0,2)*60) + parseInt(feature.properties.signPlates[i].StartTime.substring(3,5),10);
+        end = (feature.properties.signPlates[i].EndTime.substring(0,2)*60) + parseInt(feature.properties.signPlates[i].EndTime.substring(3,5),10);
 
-      signLookup['S'+feature.properties.signPlates[i].SignPlateId] = feature.properties.signPlates[i].MinutesAllowed;
+        signLookup['S'+feature.properties.signPlates[i].SignPlateId] = feature.properties.signPlates[i].MinutesAllowed;
 
-      for (j = start; j <= end; j++) {
-        processedData[j] = 1;
+        for (j = start; j <= end; j++) {
+          processedData[j] = 1;
+        }
+
+
       }
-
-      }
-
 
       //Loop through find each park add data
       for (i = 0; i < feature.properties.sensor.length; i++) {
 
-      //Add to total park events this day
-      this.parkingEvents += 1;
+        //Add to total park events this day
+        this.parkingEvents += 1;
 
-      start = moment(feature.properties.sensor[i].arrivalDateTime).diff(dataDate, 'minutes');
-      end =  moment(feature.properties.sensor[i].departDateTime).diff(dataDate, 'minutes');
+        //Performance Change
+        //Quicker to pull out hour and times by 60 and then add minute then to use moment
+        start = (feature.properties.sensor[i].arrivalDateTime.substring(11,13)*60) + parseInt(feature.properties.sensor[i].arrivalDateTime.substring(14,16),10);
+        end = (feature.properties.sensor[i].departDateTime.substring(11,13)*60) + parseInt(feature.properties.sensor[i].departDateTime.substring(14,16),10);
+
+        var status;
+        if (feature.properties.sensor[i].inViolation) {
+          for ( j = start; j <= end; j++) {
+          processedData[j] = 4;
+          }
+
+          var timeAllowed = signLookup['S'+feature.properties.sensor[i].signPlateId];
+
+          if (end-start > timeAllowed) {
+          for ( j = start; j <= start+ timeAllowed; j++) {
+            processedData[j] = 3;
+          }
+          }
+
+          //Add to total violations this day
+          this.parkingViolations += 1;
 
 
-      var status;
-      if (feature.properties.sensor[i].inViolation) {
-        for ( j = start; j <= end; j++) {
-        processedData[j] = 4;
-        }
-
-        var timeAllowed = signLookup['S'+feature.properties.sensor[i].signPlateId];
-
-        if (end-start > timeAllowed) {
-        for ( j = start; j <= start+ timeAllowed; j++) {
-          processedData[j] = 3;
-        }
-        }
-
-        //Add to total violations this day
-        this.parkingViolations += 1;
-
-
-      } else {
-        for ( j = start; j <= end; j++) {
-        processedData[j] = 2;
+        } else {
+          for ( j = start; j <= end; j++) {
+          processedData[j] = 2;
+          }
         }
       }
 
-      
 
-      }
 
       //Loop through and find gaps fill in with unmonitored/free times
       for (j = 0; j <= 1440; j++) {
@@ -125,7 +125,6 @@ var MELBPARKING = MELBPARKING || {};
         processedData[j] = 0;
         }
       }
-
 
       this.addParkingSpotToStats(processedData);
 
