@@ -19,19 +19,23 @@ var MELBPARKING = MELBPARKING || {};
 
         d3.json("../MelbParkingData/"+dataFileName, function(collection) {
 
+
+          
           self._collection = collection;
+
 
           MELBPARKING.Map.parkingSliderControl.init(self.refreshTime);
 
-          MELBPARKING.DataProcessor.initStats();
 
+          MELBPARKING.DataProcessor.initStats();
+          
           for (var i = 0; i < collection.features.length; i++) {
 
             var parkingTimeArray = MELBPARKING.DataProcessor.parkingSpotTimeArray(collection.features[i],currentDate);
             collection.features[i].properties.parkingData = parkingTimeArray;
 
-          }
 
+          }
 
           var transform = d3.geo.transform({point: self.projectPoint});
           self._path = d3.geo.path().projection(transform);
@@ -45,6 +49,7 @@ var MELBPARKING = MELBPARKING || {};
               "click":  function(d) { console.log(d); },
             });
 
+
           MELBPARKING.Map.map.on("viewreset", self.reset);
           self.reset();
           self.refreshTime();
@@ -53,7 +58,9 @@ var MELBPARKING = MELBPARKING || {};
 
           var totalParkingSpaces = collection.features.length;
           MELBPARKING.Map.parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)), totalParkingSpaces);
+
           $('.loading').fadeOut(600);
+
 
         });
 
@@ -75,7 +82,6 @@ var MELBPARKING = MELBPARKING || {};
             self._g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
 
             self._feature.attr("d", self._path);
-
 
     },
 
@@ -119,7 +125,6 @@ var MELBPARKING = MELBPARKING || {};
                   return bayStatus;
 
                 });
-      
     },
     projectPoint: function(x, y) {
       var point = MELBPARKING.Map.map.latLngToLayerPoint(new L.LatLng(y, x));
