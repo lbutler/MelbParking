@@ -28,7 +28,7 @@ L.Control.ParkingTimeControl = L.Control.extend({
 
         this._div.innerHTML = '<div class="time-controls-front"><h1>'+this.dayMoment.format('dddd')+'</h1>' +
         '<h2>'+this.dayMoment.format('Do MMMM YYYY')+'</h2>' +
-        '<h1><i class="fa fa-clock-o"></i> <span id="time">12:00 am</span></h1>' +
+        '<h1><i class="fa fa-clock-o"></i> <span id="time">7:30 am</span></h1>' +
         
         '<hr>'+
         '<div class="menu-grid grid-pad">' +
