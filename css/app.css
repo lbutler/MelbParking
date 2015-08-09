@@ -134,3 +134,68 @@ color: #777;
 .time-controls-back {
   font-size: 62.5%
 }
+
+
+
+
+.loading {
+
+
+  z-index: 2000;
+
+  opacity: .8;
+  background: #000;
+
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+/* SpinKit | https://github.com/tobiasahlin/SpinKit  */
+.spinner {
+  margin: 100px auto 0;
+  width: 140px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.spinner > div {
+  width: 36px;
+  height: 36px;
+  background-color: #EEE;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

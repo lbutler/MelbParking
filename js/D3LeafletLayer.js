@@ -53,6 +53,7 @@ var MELBPARKING = MELBPARKING || {};
 
           var totalParkingSpaces = collection.features.length;
           MELBPARKING.Map.parkingTimeGraph.update(JSON.parse(JSON.stringify(MELBPARKING.DataProcessor.dayStats)), totalParkingSpaces);
+          $('.loading').fadeOut(600);
 
         });
 

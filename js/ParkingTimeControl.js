@@ -25,6 +25,9 @@ L.Control.ParkingTimeControl = L.Control.extend({
              maxDate: new Date(2014, 11, 31),
              dateFormat: "dd/mm/yy",
              onSelect: function(date) {
+
+                $('.loading').show();
+
                 //TODO:
                 //Clean this up
                 var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
