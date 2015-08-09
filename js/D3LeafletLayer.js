@@ -17,7 +17,7 @@ var MELBPARKING = MELBPARKING || {};
 
         var dataFileName = moment(currentDate).format('YYYYMMDD') + '.json';
 
-        d3.json("../MelbParkingData/"+dataFileName, function(collection) {
+        d3.json("http://d2qnyrq2dk7zba.cloudfront.net/"+dataFileName, function(collection) {
 
 
           
