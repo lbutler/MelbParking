@@ -40,6 +40,8 @@ L.Control.ParkingTimeControl = L.Control.extend({
         '</div>'+
         '<div class="time-controls-back" id="datepicker"></div>';
 
+        this.init();
+
     }
 
 

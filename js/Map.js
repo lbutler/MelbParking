@@ -37,6 +37,16 @@ var MELBPARKING = MELBPARKING || {};
     
       this.parkingTimeControl.changeDate(date);
 
+
+      //TODO:
+      //NOT DRY
+      var self = this;
+
+      $('#js-toogle-24hr-mode').click( function() {
+          self.parkingSliderControl.toogleHoursDisplayed();
+          self.parkingTimeGraph.toogleHoursDisplayed();
+      });
+
     }
 
   };
