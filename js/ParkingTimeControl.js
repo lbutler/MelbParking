@@ -2,10 +2,13 @@ L.Control.ParkingTimeControl = L.Control.extend({
     options: {position: 'topleft'},
     onAdd: function (map) {
 
+    var dayMoment = moment(this.options.day);
+    console.log(this._dayMoment);
+
     var div = L.DomUtil.create('div', 'info timestats time-control');
 
-    div.innerHTML = '<div class="time-controls-front"><h1>Thursday</h1>' +
-    '<h2>12th June 2014</h2>' +
+    div.innerHTML = '<div class="time-controls-front"><h1>'+dayMoment.format('dddd')+'</h1>' +
+    '<h2>'+dayMoment.format('Do MMMM YYYY')+'</h2>' +
     '<h1><i class="fa fa-clock-o"></i> <span id="time">12:00 am</span></h1>' +
     
     '<hr>'+
