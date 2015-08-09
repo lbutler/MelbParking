@@ -51,7 +51,7 @@ L.Control.ParkingBayInfo = L.Control.extend({
     var domString = '<ul class="parking-info-list">';
 
     for (var i = 0; i < parkingEvents.length; i++) {
-      domString += '<li class="'+(parkingEvents[i].inViolation ? 'violation': 'withinlimit')+'"">'  +parkingEvents[i].arrivalDateTime.substr(11) + ' - ' + parkingEvents[i].depart.substr(11) + ' ' + (parkingEvents[i].inViolation ? overstay: '') + '</li>';
+      domString += '<li class="'+(parkingEvents[i].inViolation ? 'violation': 'withinlimit')+'"">'  +parkingEvents[i].arrivalDateTime.substr(11) + ' - ' + parkingEvents[i].departDateTime.substr(11) + ' ' + (parkingEvents[i].inViolation ? overstay: '') + '</li>';
     }
 
     domString += '</ul>';

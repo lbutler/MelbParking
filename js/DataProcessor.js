@@ -86,7 +86,7 @@ var MELBPARKING = MELBPARKING || {};
       this.parkingEvents += 1;
 
       start = moment(feature.properties.sensor[i].arrivalDateTime).diff(dataDate, 'minutes');
-      end =  moment(feature.properties.sensor[i].depart).diff(dataDate, 'minutes');
+      end =  moment(feature.properties.sensor[i].departDateTime).diff(dataDate, 'minutes');
 
 
       var status;
