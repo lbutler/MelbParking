@@ -51,7 +51,7 @@ L.Control.ParkingDayStats = L.Control.extend({
 
 
       var parkingViolations = MELBPARKING.DataProcessor.parkingViolations;
-      var potentialFines = parkingViolations * 30;
+      var potentialFines = parkingViolations * 75;
       
       document.getElementById('stats-total-violations').innerHTML = parkingViolations;
       document.getElementById('stats-total-events').innerHTML = MELBPARKING.DataProcessor.parkingEvents;
