@@ -14,6 +14,7 @@ L.Control.ParkingTimeGraph = L.Control.extend({
   update: function(data, totalParkingSpaces) {
 
     this._data = JSON.parse(JSON.stringify(data));
+    this._totalParkingSpaces = totalParkingSpaces;
 
     var margin = {top: 0, right: 0, bottom: 30, left: 0},
       width = 1728 - margin.left - margin.right,
@@ -109,7 +110,7 @@ L.Control.ParkingTimeGraph = L.Control.extend({
     toogleHoursDisplayed: function() {
 
       this.options.peakHoursOnly = !this.options.peakHoursOnly;
-      this.update(this._data);
+      this.update(this._data,this._totalParkingSpaces);
 
     }
 
