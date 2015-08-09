@@ -51,10 +51,10 @@ var MELBPARKING = MELBPARKING || {};
 
     },
 
-    parkingSpotTimeArray: function(feature) {
+    parkingSpotTimeArray: function(feature,currentDate) {
 
-      var date = '2014-01-01';
-      var dataDate = moment('2014-01-01T00:00:00');
+      var date = moment(currentDate).format('YYYY-MM-DD');
+      var dataDate = moment(currentDate);
 
       var processedData = new Array(1440);
 

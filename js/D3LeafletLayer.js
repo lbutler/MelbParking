@@ -14,7 +14,7 @@ var MELBPARKING = MELBPARKING || {};
         this._svg = d3.select(MELBPARKING.Map.map.getPanes().overlayPane).append("svg");
         this._g = this._svg.append("g").attr("class", "leaflet-zoom-hide");
 
-        var dataFileName = this._getFileName(currentDate) + '.json';
+        var dataFileName = moment(currentDate).format('YYYYMMDD') + '.json';
 
         d3.json("../MelbParkingData/"+dataFileName, function(collection) {
 
@@ -26,7 +26,7 @@ var MELBPARKING = MELBPARKING || {};
 
           for (var i = 0; i < collection.features.length; i++) {
 
-            var parkingTimeArray = MELBPARKING.DataProcessor.parkingSpotTimeArray(collection.features[i]);
+            var parkingTimeArray = MELBPARKING.DataProcessor.parkingSpotTimeArray(collection.features[i],currentDate);
             collection.features[i].properties.parkingData = parkingTimeArray;
 
           }
@@ -120,14 +120,6 @@ var MELBPARKING = MELBPARKING || {};
     projectPoint: function(x, y) {
       var point = MELBPARKING.Map.map.latLngToLayerPoint(new L.LatLng(y, x));
       this.stream.point(point.x, point.y);
-    },
-    _getFileName: function(date) {
-
-      var yyyy = date.getFullYear().toString();
-      var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
-      var dd  = date.getDate().toString();
-      return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
-
     }
 
   };
