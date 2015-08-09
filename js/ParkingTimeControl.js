@@ -20,7 +20,18 @@ L.Control.ParkingTimeControl = L.Control.extend({
       document.getElementById('time').innerHTML = moment(newTime).format('h:mm a');
     },
     addDatepicker: function() {
-        $( "#datepicker" ).datepicker({ minDate: new Date(2014, 0, 1), maxDate: new Date(2014, 11, 31) });
+        $( "#datepicker" ).datepicker(
+            { minDate: new Date(2014, 0, 1),
+             maxDate: new Date(2014, 11, 31),
+             dateFormat: "dd/mm/yy",
+             onSelect: function(date) {
+                //TODO:
+                //Clean this up
+                var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+
+                MELBPARKING.Map.changeDate(dateAsObject);
+                MELBPARKING.D3LeafletLayer.init(dateAsObject);
+             } });
     },
     changeDate: function(date) {
 
