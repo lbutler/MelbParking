@@ -1,15 +1,8 @@
 (function() {
 
-  MELBPARKING.Map.init();
+	var currentDate = new Date(2014, 0, 1, 0, 0, 0);
 
-  var currentDate = new Date(2014, 5, 12, 0, 0, 0);
+  MELBPARKING.Map.init();
   MELBPARKING.D3LeafletLayer.init(currentDate);
 
 }());
-
-      
-
-
-
-
-
