@@ -11,7 +11,7 @@ L.Control.ParkingTimeGraph = L.Control.extend({
 
     return this._div;
   },
-  update: function(data) {
+  update: function(data, totalParkingSpaces) {
 
     this._data = JSON.parse(JSON.stringify(data));
 
@@ -69,11 +69,11 @@ L.Control.ParkingTimeGraph = L.Control.extend({
         ////d.date = index;
         //console.log(d.date);
 
-        d.parkingEmpty = d.parkingEmpty / 3159  *100;
-        d.parkingInViolation = d.parkingInViolation / 3159*100;
-        d.parkingNoMonitoring = d.parkingNoMonitoring / 3159*100;
-        d.parkingTaken = d.parkingTaken / 3159*100;
-        d.parkingWillViolate = d.parkingWillViolate / 3159*100;
+        d.parkingEmpty = d.parkingEmpty / totalParkingSpaces  *100;
+        d.parkingInViolation = d.parkingInViolation / totalParkingSpaces*100;
+        d.parkingNoMonitoring = d.parkingNoMonitoring / totalParkingSpaces*100;
+        d.parkingTaken = d.parkingTaken / totalParkingSpaces*100;
+        d.parkingWillViolate = d.parkingWillViolate / totalParkingSpaces*100;
 
       });
 
