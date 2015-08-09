@@ -55,18 +55,21 @@ var MELBPARKING = MELBPARKING || {};
 
     reset: function() {
 
-      var bounds = this._path.bounds(this._collection),
+      self = MELBPARKING.D3LeafletLayer;
+
+      var bounds = self._path.bounds(self._collection),
                 topLeft = bounds[0],
                 bottomRight = bounds[1];
 
-            this._svg .attr("width", bottomRight[0] - topLeft[0])
+            self._svg .attr("width", bottomRight[0] - topLeft[0])
                 .attr("height", bottomRight[1] - topLeft[1])
                 .style("left", topLeft[0] + "px")
                 .style("top", topLeft[1] + "px");
 
-            this._g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+            self._g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
 
-            this._feature.attr("d", this._path);
+            self._feature.attr("d", self._path);
+
 
     },
 
