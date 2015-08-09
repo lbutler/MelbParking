@@ -11,6 +11,7 @@ var MELBPARKING = MELBPARKING || {};
         this._currentDate = currentDate;
 
         //SVG Display
+        d3.select('.leaflet-overlay-pane').selectAll('*').remove();
         this._svg = d3.select(MELBPARKING.Map.map.getPanes().overlayPane).append("svg");
         this._g = this._svg.append("g").attr("class", "leaflet-zoom-hide");
 

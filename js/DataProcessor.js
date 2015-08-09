@@ -11,6 +11,8 @@ var MELBPARKING = MELBPARKING || {};
     initStats: function() {
       //Reset
       this.dayStats = new Array(1441);
+      this.parkingViolations = 0;
+      this.parkingEvents = 0;
 
       var currentDate = new Date(2014, 5, 12, 0, 0, 0);
 
