@@ -23,6 +23,7 @@ L.Control.ParkingTimeControl = L.Control.extend({
         $( "#datepicker" ).datepicker(
             { minDate: new Date(2014, 0, 1),
              maxDate: new Date(2014, 11, 31),
+             defaultDate: this.dayMoment.toDate(),
              dateFormat: "dd/mm/yy",
              onSelect: function(date) {
 
