@@ -2,7 +2,7 @@ L.Control.ParkingDayStats = L.Control.extend({
     options: {position: 'topleft'},
     onAdd: function (map) {
 
-      var div = L.DomUtil.create('div', 'info timestats');
+      var div = L.DomUtil.create('div', 'info timestats info-stats');
 
       div.innerHTML = '<div class="stats-grid">' +
       '  <div class="col-1-2"><h4>Parking Events<h1><span id="stats-total-events">??</span></h1></h4></div>' +
