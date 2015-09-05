@@ -16,11 +16,10 @@ L.Control.ParkingDayStats = L.Control.extend({
       ''+
       '  <div class="col-1-3"><h4>Free<h1><span id="stats-parking-empty">??</span></h1><h4></div>' +
       '  <div class="col-1-3"><h4>Taken<h1><span id="stats-parking-total-taken">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Dummy<h1><span id="stats-parking-dummy">??</span></h1><h4></div>' +
+      '  <div class="col-1-3"><h4>Over Limt<h1><span id="stats-parking-in-violation">??</span></h1><h4></div>' +
       ''+
-      '  <div class="col-1-3"><h4>Will leave<h1><span id="stats-parking-will-leave">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Will violate<h1><span id="stats-parking-will-violation">??</span></h1><h4></div>' +
-      '  <div class="col-1-3"><h4>Over limt<h1><span id="stats-parking-in-violation">??</span></h1><h4></div>' +
+      '  <div class="col-1-2"><h4>Taken And Will Leave Ontime<h1><span id="stats-parking-will-leave">??</span></h1><h4></div>' +
+      '  <div class="col-1-2"><h4>Taken And Will Overstay<h1><span id="stats-parking-will-violation">??</span></h1><h4></div>' +
       ''+
       '</div>';
 
