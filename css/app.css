@@ -154,6 +154,10 @@ color: #777;
   left: 0;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 
 /* SpinKit | https://github.com/tobiasahlin/SpinKit  */
 .spinner {
