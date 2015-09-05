@@ -2,7 +2,7 @@ L.Control.ParkingBayInfo = L.Control.extend({
   options: {position: 'topright'},
 
   onAdd: function (map) {
-    this._div = L.DomUtil.create('div', 'info');
+    this._div = L.DomUtil.create('div', 'info parking-spot-info');
     this.clearInfo();
     return this._div;
   },

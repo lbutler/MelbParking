@@ -1,0 +1,23 @@
+
+@media (max-width: 720px) {
+
+
+	.parking-spot-info {
+
+		display:none;
+	}
+
+	.info-stats {
+
+		display:none;
+	}
+
+	.ui-slider-horizontal {
+    	height: 1.6em;
+	}
+
+	.ui-slider .ui-slider-handle {
+    	height: 2.0em;
+	}
+
+}
