@@ -7,9 +7,6 @@ L.Control.ParkingDayStats = L.Control.extend({
       div.innerHTML = '<div class="stats-grid">' +
       '  <div class="col-1-2"><h4>Parking Events<h1><span id="stats-total-events">??</span></h1></h4></div>' +
       '  <div class="col-1-2"><h4>Parking Violations<h1><span id="stats-total-violations">??</span></h1></h4></div>' +
-      ''+
-      '  <div class="col-1-2"><h4>Potential Revenue<h1><span id="stats-potential-revenue">??</span></h1></h4></div>' +
-      '  <div class="col-1-2"><h4>Potential Fines<h1><span id="stats-potential-fines">??</span></h1></h4></div>' +
       '</div>'+
       '<hr>'+
       '<div class="stats-grid">' +
@@ -51,11 +48,9 @@ L.Control.ParkingDayStats = L.Control.extend({
 
 
       var parkingViolations = MELBPARKING.DataProcessor.parkingViolations;
-      var potentialFines = parkingViolations * 75;
       
       document.getElementById('stats-total-violations').innerHTML = parkingViolations;
       document.getElementById('stats-total-events').innerHTML = MELBPARKING.DataProcessor.parkingEvents;
-      document.getElementById('stats-potential-fines').innerHTML = '$' + potentialFines.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 
 
 
