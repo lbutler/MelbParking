@@ -2,7 +2,7 @@ L.Control.ParkingTimeControl = L.Control.extend({
     options: {position: 'topleft'},
     onAdd: function (map) {
 
-    this._div = L.DomUtil.create('div', 'info timestats time-control');
+    this._div = L.DomUtil.create('div', 'info-dark timestats time-control');
     this.changeDate(this.options.day);
 
     return this._div;
