@@ -7,10 +7,17 @@
 		display:none;
 	}
 
-	.info-stats {
+	.graph {
 
 		display:none;
 	}
+	.col-1-2 {
+		display: none;
+	}
+
+
+
+}
 
 	.ui-slider-horizontal {
     	height: 1.6em;
@@ -19,5 +26,3 @@
 	.ui-slider .ui-slider-handle {
     	height: 2.0em;
 	}
-
-}

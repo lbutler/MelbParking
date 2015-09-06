@@ -103,6 +103,9 @@ color: #999;
 
 
 /* Slider  */
+.info.slider.leaflet-control {
+  margin-bottom: 20px;
+}
 .leaflet-bottom  {
 
   width: 90%;
@@ -127,8 +130,18 @@ color: #999;
 
 .stats-grid {
 
-  width: 300px;
+  width: 184px;
+  margin-top: 5px;
 
+}
+
+.stats {
+  float:right;
+  font-weight: bold;
+}
+
+.col-1-2 h4 {
+  text-align: center;
 }
 
 .menu-grid {
@@ -154,7 +167,10 @@ color: #999;
 }
 
 
-
+.legend-item svg {
+    width: 10px;
+    height: 10px;
+}
 
 .loading {
 

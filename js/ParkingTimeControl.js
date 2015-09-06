@@ -46,7 +46,7 @@ L.Control.ParkingTimeControl = L.Control.extend({
         '<h1><i class="fa fa-clock-o"></i> <span id="time">7:30 am</span></h1>' +
         
         '<hr>'+
-        '<div class="menu-grid grid-pad">' +
+        '<div class="menu-grid">' +
         '   <div id="js-open-datepicker" class="col-1-4"><i class="fa fa-calendar-o clickable"></i></div>' +
         '   <div id="js-toogle-24hr-mode" class="col-1-4"><i class="fa fa-clock-o clickable"></i></div>' +
         '   <div class="col-1-4"><a href="https://github.com/lbutler/MelbParking" target="_blank"><i class="fa fa-github clickable"></i></a></div>' +

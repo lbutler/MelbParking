@@ -27,7 +27,8 @@
 }
 
 [class*='col-'] {
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 [class*='col-']:last-of-type {
   padding-right: 0;
